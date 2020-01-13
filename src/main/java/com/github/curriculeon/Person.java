@@ -22,6 +22,6 @@ public class Person {
     }
 
     public String toString(){
-        return "";
+        return "ID: " + this.getId() + " NAME: " + this.getName();
     }
 }

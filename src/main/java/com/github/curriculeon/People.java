@@ -70,13 +70,17 @@ public class People<SomeType extends Person> implements Iterable<SomeType>{
     }
 
     public SomeType[] removeAll(){
-        SomeType[] temp = this.personList.toArray((SomeType[]) new Object[this.personList.size()]);
+        SomeType[] temp = this.personList.toArray((SomeType[]) new Object[this.personList.size()]); //GENERIC CAST
         this.personList = new ArrayList<>();
         return temp;
     }
 
     public int count(){
         return this.personList.size();
+    }
+
+    public SomeType[] toArray(){
+        return (SomeType[]) this.personList.toArray(); //GENERIC CAST
     }
 
 
@@ -87,6 +91,10 @@ public class People<SomeType extends Person> implements Iterable<SomeType>{
 
     @Override
     public String toString(){
-
+        String peopleContents = "";
+        for (SomeType someType : personList) {
+            peopleContents = peopleContents.concat(someType.toString() + " ");
+        }
+        return "Size: " + this.personList.size() + " CONTENTS: " + peopleContents;
     }
 }
